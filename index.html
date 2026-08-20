@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mindora · Learn, Build, Evolve</title>
+
+    <!-- ===== FAVICONS ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo1.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- ===== FONTS & ICONS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- ===== GLOBAL + LANDING CSS ===== -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/landing.css" />
+
+    <style>
+        /* --- Quick patch: dashboard-only navigation --- */
+        .cta-group .btn-nav-outline { display: none; }
+        .cta-group .btn-nav {
+            background: var(--gradient-button);
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+        }
+        .cta-group .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        }
+        .hero-actions .btn-outline.btn-hero { display: none; }
+        .hero-actions .btn-primary.btn-hero { width: auto; min-width: 220px; }
+        .nav-link[href="/login"], .nav-link[href="/signup"] { display: none; }
+        .pricing-card .btn-plan { pointer-events: none; opacity: 0.6; }
+        .pricing-card.featured-plan .btn-plan {
+            pointer-events: auto;
+            opacity: 1;
+            background: var(--gradient-button);
+        }
+        .pricing-card.featured-plan .btn-plan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        }
+
+        /* --- Small touch: dashboard link glow --- */
+        a[href="./pages/dashboard.html"] {
+            transition: var(--transition-smooth);
+        }
+        a[href="./pages/dashboard.html"]:hover {
+            transform: translateY(-2px);
+        }
+        .footer-links-col ul li a[href="./pages/dashboard.html"]:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* --- Fix asset paths --- */
+        .brand-logo-img {
+            height: 45px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.2));
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== CUSTOM CURSOR ===== -->
+    <div class="cursor-dot" data-cursor></div>
+    <div class="cursor-outline" data-cursor></div>
+
+    <!-- ===== PRELOADER ===== -->
+    <div class="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Mindora</div>
+    </div>
+
+    <!-- ===== BACKGROUND AMBIENCE ===== -->
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="navbar" class="glass-nav">
+        <div class="nav-container">
+            <a href="./index.html" class="logo-wrapper">
+                <img src="./assets/logo1.png" alt="Mindora Logo" class="brand-logo-img" />
+                <span class="brand-logo-text">Mindora</span>
+            </a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item"><a href="#subjects" class="nav-link">Courses</a></li>
+                    <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="#feedback" class="nav-link">Feedback</a></li>
+                    <li class="nav-item cta-group">
+                        <a href="./pages/dashboard.html" class="btn-primary btn-nav">
+                            <i class="fas fa-th-large"></i> Dashboard
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <div class="container hero-content">
+            <div class="hero-badge animate__animated animate__fadeInUp">
+                <i class="fas fa-sparkles"></i> Trusted by 12,000+ Learners
+            </div>
+            <h1 class="hero-title animate__animated animate__fadeInUp animate__delay-1s">
+                Future-Proof Your <br /><span class="gradient-text">Tech Career</span>
+            </h1>
+            <p class="hero-desc animate__animated animate__fadeInUp animate__delay-2s">
+                Comprehensive, interactive courses in Java, Python, C++, and more.
+                Track your evolution with AI-powered progress analytics in real-time.
+            </p>
+            <div class="hero-actions animate__animated animate__fadeInUp animate__delay-3s">
+                <a href="./pages/dashboard.html" class="btn-primary btn-hero">
+                    <span>Explore Dashboard</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-stats-wrapper animate__animated animate__fadeInUp animate__delay-4s">
+            <div class="stat-card">
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">Interactive Lessons</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="12000">0</div>
+                <div class="stat-label">Active Learners</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="4.9">0</div>
+                <div class="stat-label">Avg. User Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SUBJECTS CAROUSEL ===== -->
+    <section id="subjects" class="subjects-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Popular <span class="gradient-text">Subjects</span></h2>
+                <p class="section-desc">Choose your path and master the technologies that drive the modern world.</p>
+            </div>
+
+            <div class="subject-track-wrapper reveal">
+                <div class="subject-track">
+                    <div class="subject-card"><div class="icon-box">☕</div><span>Java</span></div>
+                    <div class="subject-card"><div class="icon-box">🐍</div><span>Python</span></div>
+                    <div class="subject-card"><div class="icon-box">🟨</div><span>JavaScript</span></div>
+                    <div class="subject-card"><div class="icon-box">⚙️</div><span>C++</span></div>
+                    <div class="subject-card"><div class="icon-box">🔵</div><span>C Language</span></div>
+                    <div class="subject-card"><div class="icon-box">🚺</div><span>Gender Studies</span></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="subject-card"><div class="icon-box">☕</div><span>Java</span></div>
+                    <div class="subject-card"><div class="icon-box">🐍</div><span>Python</span></div>
+                    <div class="subject-card"><div class="icon-box">🟨</div><span>JavaScript</span></div>
+                    <div class="subject-card"><div class="icon-box">⚙️</div><span>C++</span></div>
+                    <div class="subject-card"><div class="icon-box">🔵</div><span>C Language</span></div>
+                    <div class="subject-card"><div class="icon-box">🚺</div><span>Gender Studies</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="process-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">How <span class="gradient-text">It Works</span></h2>
+                <p class="section-desc">Get started in 3 simple steps. No credit card required.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step glass-card reveal">
+                    <div class="step-number">01</div>
+                    <h3>Choose Your Path</h3>
+                    <p>Browse our comprehensive library of subjects. Pick the technology that aligns with your career goals.</p>
+                </div>
+                <div class="process-step glass-card reveal">
+                    <div class="step-number">02</div>
+                    <h3>Learn by Doing</h3>
+                    <p>Engage with interactive lessons, hands-on coding challenges, and real-world projects to build your portfolio.</p>
+                </div>
+                <div class="process-step glass-card reveal">
+                    <div class="step-number">03</div>
+                    <h3>Track &amp; Evolve</h3>
+                    <p>Watch your progress in real-time. Our AI analyzes your performance to help you improve consistently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Simple, <span class="gradient-text">Transparent Pricing</span></h2>
+                <p class="section-desc">Invest in your future. No hidden fees, cancel anytime.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card glass-card reveal">
+                    <div class="plan-header">
+                        <h3>Starter</h3>
+                        <div class="price"><span class="currency">$</span>0<span class="period">/mo</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 1 Subject Access</li>
+                        <li><i class="fas fa-check-circle"></i> Basic Progress Tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Community Support</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Advanced Analytics</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Offline Access</li>
+                    </ul>
+                    <a href="./pages/dashboard.html" class="btn-outline btn-plan">Get Started</a>
+                </div>
+
+                <div class="pricing-card glass-card reveal featured-plan">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Pro</h3>
+                        <div class="price"><span class="currency">$</span>19<span class="period">/mo</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> All Subjects Access</li>
+                        <li><i class="fas fa-check-circle"></i> AI-Powered Analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Priority Support</li>
+                        <li><i class="fas fa-check-circle"></i> Offline Learning Mode</li>
+                        <li><i class="fas fa-check-circle"></i> Certificate of Completion</li>
+                    </ul>
+                    <a href="./pages/dashboard.html" class="btn-primary btn-plan">Start Free Trial</a>
+                </div>
+
+                <div class="pricing-card glass-card reveal">
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="price"><span class="currency">$</span>49<span class="period">/mo</span></div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> All Pro Features</li>
+                        <li><i class="fas fa-check-circle"></i> Team Management</li>
+                        <li><i class="fas fa-check-circle"></i> Custom Learning Paths</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
+                        <li><i class="fas fa-check-circle"></i> API Access</li>
+                    </ul>
+                    <a href="./pages/dashboard.html" class="btn-outline btn-plan">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEEDBACK ===== -->
+    <section id="feedback" class="feedback-section">
+        <div class="container">
+            <div class="feedback-wrapper glass-card reveal">
+                <div class="feedback-header">
+                    <h2>Share Your <span class="gradient-text">Vision</span></h2>
+                    <p>Help us craft the perfect learning experience. Your feedback drives our evolution.</p>
+                </div>
+
+                <form id="feedbackForm" class="premium-form">
+                    <div id="formAlert" class="alert-box"></div>
+
+                    <div class="input-group">
+                        <input type="text" id="fbSubject" class="premium-input" placeholder=" " required />
+                        <label for="fbSubject">Subject</label>
+                    </div>
+
+                    <div class="input-group">
+                        <select id="fbCategory" class="premium-input" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="general">General</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="feature-request">Feature Request</option>
+                            <option value="bug-report">Bug Report</option>
+                            <option value="praise">Praise</option>
+                        </select>
+                        <label for="fbCategory">Category</label>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="fbMessage" class="premium-input" rows="4" placeholder=" " required></textarea>
+                        <label for="fbMessage">Your Feedback</label>
+                    </div>
+
+                    <div class="rating-wrapper">
+                        <span class="rating-label">Rate Your Experience</span>
+                        <div class="stars">
+                            <i class="far fa-star" data-value="1"></i>
+                            <i class="far fa-star" data-value="2"></i>
+                            <i class="far fa-star" data-value="3"></i>
+                            <i class="far fa-star" data-value="4"></i>
+                            <i class="far fa-star" data-value="5"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-submit">
+                        <span>Send Feedback</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <a href="./index.html" class="logo-wrapper">
+                        <img src="./assets/logo1.png" alt="Mindora" class="brand-logo-img" />
+                        <span class="brand-logo-text">Mindora</span>
+                    </a>
+                    <p class="footer-tagline">Master the art of coding with immersive, AI-driven courses. Learn, Build, Evolve.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#subjects">Subjects</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">For Enterprise</a></li>
+                        <li><a href="./pages/dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">API Docs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter-col">
+                    <h4>Stay Updated</h4>
+                    <p>Get the latest news and course updates directly to your inbox.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+                        <input type="email" placeholder="Enter your email" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mindora Inc. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="./js/landing.js"></script>
+</body>
+</html>

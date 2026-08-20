@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mindora · Python Programming</title>
+
+    <!-- ===== FAVICONS ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/logo1.png" />
+
+    <!-- ===== FONTS & ICONS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- ===== STYLES ===== -->
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/dashboard.css" />
+    <link rel="stylesheet" href="./css/python.css" />
+</head>
+<body>
+
+    <!-- ===== PRELOADER ===== -->
+    <div class="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading Python...</div>
+    </div>
+
+    <!-- ===== BACKGROUND ===== -->
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="dashboard-header glass-nav">
+        <div class="header-container">
+            <a href="../../index.html" class="logo-wrapper">
+                <img src="../../assets/logo1.png" alt="Mindora" class="brand-logo-img" />
+                <span class="brand-logo-text">Mindora</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../../index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="../../pages/dashboard.html" class="nav-link">
+                    <i class="fas fa-th-large"></i> Dashboard
+                </a>
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-book-open"></i> Python
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="subject-main">
+        <div class="container">
+            <a href="../../pages/dashboard.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+
+            <!-- Subject Banner - Rendered by JavaScript -->
+            <div id="subjectBanner"></div>
+
+            <!-- Units Section - Rendered by JavaScript -->
+            <div class="units-section">
+                <h2 class="section-title">📚 Course Units</h2>
+                <div id="unitsContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2026 Mindora. Made with <i class="fas fa-heart" style="color: var(--neon-pink);"></i> for learners.</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT - ORDER MATTERS! ===== -->
+    <!-- 1. First load the data -->
+    <script src="index.js"></script>
+    <!-- 2. Then load the render logic -->
+    <script src="./js/python.js"></script>
+</body>
+</html>
