@@ -1,0 +1,518 @@
+/* ============================================
+   📐 DATA TYPES DIAGRAM STYLES
+   ============================================ */
+
+/* ----- Hierarchy Diagram Base ----- */
+.type-diagram {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 30px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.type-diagram .type-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+/* ----- Root Node ----- */
+.type-diagram .type-root {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.05));
+    border: 2px solid var(--neon-cyan);
+    color: #fff;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.08);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.type-diagram .type-root:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 60px rgba(0, 240, 255, 0.15);
+}
+
+/* ----- Vertical Line ----- */
+.type-diagram .type-vertical-line {
+    width: 2px;
+    height: 20px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* ----- Branch Container (T-junction) ----- */
+.type-diagram .type-branch-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.type-diagram .type-horizontal-line {
+    width: 70%;
+    height: 2px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    position: relative;
+    border-radius: 2px;
+}
+
+.type-diagram .type-horizontal-line::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    transform: translateX(-50%);
+}
+
+/* ----- Children (3 branches) ----- */
+.type-diagram .type-children {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 8px 0 4px 0;
+    position: relative;
+}
+
+.type-diagram .type-child {
+    flex: 1;
+    min-width: 140px;
+    max-width: 220px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.type-diagram .type-child::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    transform: translateX(-50%);
+}
+
+/* ----- Child Nodes ----- */
+.type-diagram .type-node {
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid var(--border-glass);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+}
+
+.type-diagram .type-node.numeric {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.06);
+    color: #7ff5ff;
+}
+
+.type-diagram .type-node.numeric:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.12);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.sequence {
+    border-color: rgba(46, 213, 115, 0.3);
+    background: rgba(46, 213, 115, 0.06);
+    color: #a8f0c0;
+}
+
+.type-diagram .type-node.sequence:hover {
+    border-color: #2ed573;
+    background: rgba(46, 213, 115, 0.12);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.mapping {
+    border-color: rgba(179, 136, 255, 0.3);
+    background: rgba(179, 136, 255, 0.06);
+    color: #d4c0ff;
+}
+
+.type-diagram .type-node.mapping:hover {
+    border-color: var(--neon-purple);
+    background: rgba(179, 136, 255, 0.12);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.set-type {
+    border-color: rgba(255, 165, 0, 0.3);
+    background: rgba(255, 165, 0, 0.06);
+    color: #ffd700;
+}
+
+.type-diagram .type-node.set-type:hover {
+    border-color: #ffa500;
+    background: rgba(255, 165, 0, 0.12);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.boolean {
+    border-color: rgba(255, 107, 157, 0.3);
+    background: rgba(255, 107, 157, 0.06);
+    color: #ff9ec3;
+}
+
+.type-diagram .type-node.boolean:hover {
+    border-color: var(--neon-pink);
+    background: rgba(255, 107, 157, 0.12);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.binary {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    color: #b0b0c8;
+}
+
+.type-diagram .type-node.binary:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node.none-type {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    color: #8888aa;
+}
+
+.type-diagram .type-node.none-type:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+.type-diagram .type-node small {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+/* ----- Sub-level (deeper hierarchy) ----- */
+.type-diagram .type-sub-level {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 80%;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    position: relative;
+}
+
+.type-diagram .type-sub-node {
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+.type-diagram .type-sub-node:hover {
+    border-color: var(--neon-cyan);
+    color: #fff;
+    background: rgba(0, 240, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.type-diagram .type-sub-node.highlight {
+    color: var(--text-secondary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .type-diagram {
+        padding: 20px 14px;
+    }
+    
+    .type-diagram .type-horizontal-line {
+        width: 85%;
+    }
+    
+    .type-diagram .type-children {
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .type-diagram .type-child {
+        max-width: 280px;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .type-diagram .type-child::before {
+        display: none;
+    }
+    
+    .type-diagram .type-node {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+    
+    .type-diagram .type-root {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+    
+    .type-diagram .type-sub-level {
+        width: 90%;
+        gap: 10px;
+    }
+    
+    .type-diagram .type-sub-node {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .type-diagram {
+        padding: 14px 10px;
+    }
+    
+    .type-diagram .type-horizontal-line {
+        width: 90%;
+    }
+    
+    .type-diagram .type-node {
+        font-size: 0.75rem;
+        padding: 8px 14px;
+    }
+    
+    .type-diagram .type-root {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+    
+    .type-diagram .type-child {
+        max-width: 100%;
+    }
+    
+    .type-diagram .type-sub-level {
+        gap: 6px;
+        width: 100%;
+    }
+    
+    .type-diagram .type-sub-node {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+}
+
+/* ============================================
+   📊 TABLE STYLES
+   ============================================ */
+
+.type-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9rem;
+}
+
+.type-table th {
+    background: rgba(0, 240, 255, 0.08);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border-glass);
+    font-weight: 600;
+}
+
+.type-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+}
+
+.type-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.type-table .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.type-table .tag-yes {
+    background: rgba(46, 213, 115, 0.15);
+    color: #2ed573;
+}
+
+.type-table .tag-no {
+    background: rgba(255, 71, 87, 0.15);
+    color: #ff4757;
+}
+
+.type-table .tag-maybe {
+    background: rgba(255, 165, 0, 0.15);
+    color: #ffa500;
+}
+
+/* ============================================
+   📝 QUICK REVISION
+   ============================================ */
+
+.quick-revision {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.quick-revision .rev-node {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.quick-revision .rev-node:hover {
+    transform: translateY(-2px);
+}
+
+.quick-revision .rev-root {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: var(--neon-cyan);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+}
+
+.quick-revision .rev-child {
+    background: rgba(255, 255, 255, 0.03);
+    min-width: 140px;
+    flex: 1;
+    padding: 12px 20px;
+}
+
+.quick-revision .rev-child:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.quick-revision .rev-child small {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+.quick-revision .rev-level {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 2px 0;
+}
+
+.quick-revision .rev-arrow {
+    color: var(--neon-cyan);
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.4;
+    padding: 2px 0;
+}
+
+@media (max-width: 768px) {
+    .quick-revision {
+        padding: 18px 14px;
+    }
+    .quick-revision .rev-level {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .quick-revision .rev-node {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        min-width: 100px;
+        width: 100%;
+        max-width: 280px;
+    }
+    .quick-revision .rev-root {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-revision {
+        padding: 14px 10px;
+    }
+    .quick-revision .rev-node {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+        min-width: 80px;
+    }
+    .quick-revision .rev-root {
+        font-size: 0.9rem;
+        padding: 10px 22px;
+    }
+}

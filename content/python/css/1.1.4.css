@@ -1,0 +1,523 @@
+/* ============================================
+   📐 HIERARCHY DIAGRAM STYLES - Fixed Arrow Branching
+   ============================================ */
+
+.scope-diagram {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 30px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.scope-diagram .scope-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 750px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+/* ===== ROOT NODE ===== */
+.scope-diagram .hierarchy-root {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.05));
+    border: 2px solid var(--neon-cyan);
+    color: #fff;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.scope-diagram .hierarchy-root:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 60px rgba(0, 240, 255, 0.15);
+}
+
+/* ===== VERTICAL LINE (from root down) ===== */
+.scope-diagram .hierarchy-vertical-line {
+    width: 2px;
+    height: 20px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* ===== BRANCH CONTAINER (the T-junction) ===== */
+.scope-diagram .hierarchy-branch-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+/* ===== HORIZONTAL LINE (the T-junction bar) ===== */
+.scope-diagram .hierarchy-horizontal-line {
+    width: 60%;
+    height: 2px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    position: relative;
+    border-radius: 2px;
+}
+
+/* ===== VERTICAL LINE FROM CENTER OF HORIZONTAL ===== */
+.scope-diagram .hierarchy-horizontal-line::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    transform: translateX(-50%);
+}
+
+/* ===== TWO CHILDREN (side by side) ===== */
+.scope-diagram .hierarchy-children {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 8px 0 4px 0;
+    position: relative;
+}
+
+.scope-diagram .hierarchy-child {
+    flex: 1;
+    min-width: 160px;
+    max-width: 260px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* ===== VERTICAL LINE FROM HORIZONTAL TO EACH CHILD ===== */
+.scope-diagram .hierarchy-child::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: var(--neon-cyan);
+    opacity: 0.3;
+    transform: translateX(-50%);
+}
+
+/* ===== CHILD NODES ===== */
+.scope-diagram .hierarchy-node {
+    padding: 14px 28px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px solid var(--border-glass);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+}
+
+.scope-diagram .hierarchy-node.global {
+    border-color: rgba(179, 136, 255, 0.4);
+    background: rgba(179, 136, 255, 0.06);
+    color: #d4c0ff;
+}
+
+.scope-diagram .hierarchy-node.global:hover {
+    border-color: var(--neon-purple);
+    background: rgba(179, 136, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(179, 136, 255, 0.1);
+}
+
+.scope-diagram .hierarchy-node.local {
+    border-color: rgba(46, 213, 115, 0.25);
+    background: rgba(46, 213, 115, 0.05);
+    color: #a8f0c0;
+}
+
+.scope-diagram .hierarchy-node.local:hover {
+    border-color: #2ed573;
+    background: rgba(46, 213, 115, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(46, 213, 115, 0.1);
+}
+
+.scope-diagram .hierarchy-node small {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+/* ===== SUB-LEVEL (optional deeper hierarchy) ===== */
+.scope-diagram .hierarchy-sub-level {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 80%;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    position: relative;
+}
+
+.scope-diagram .hierarchy-sub-node {
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    position: relative;
+}
+
+.scope-diagram .hierarchy-sub-node:hover {
+    border-color: var(--neon-cyan);
+    color: #fff;
+    background: rgba(0, 240, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   📊 LIFETIME DIAGRAM STYLES
+   ============================================ */
+
+.lifetime-diagram {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    overflow-x: auto;
+}
+
+.lifetime-diagram .lifetime-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.lifetime-diagram .lifetime-step {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.02);
+    width: 100%;
+    max-width: 280px;
+    transition: all 0.3s ease;
+}
+
+.lifetime-diagram .lifetime-step:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.03);
+    transform: translateX(4px);
+}
+
+.lifetime-diagram .lifetime-step:last-child {
+    border-color: #ff4757;
+    color: #ff4757;
+}
+
+.lifetime-diagram .lifetime-arrow {
+    color: var(--neon-cyan);
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0.4;
+    padding: 2px 0;
+}
+
+@media (max-width: 768px) {
+    .lifetime-diagram {
+        padding: 16px 14px;
+    }
+    .lifetime-diagram .lifetime-step {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lifetime-diagram {
+        padding: 12px 10px;
+    }
+    .lifetime-diagram .lifetime-step {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        max-width: 180px;
+    }
+}
+
+/* ============================================
+   📝 QUICK REVISION STYLES
+   ============================================ */
+
+.quick-revision {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.quick-revision .rev-node {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.quick-revision .rev-node:hover {
+    transform: translateY(-2px);
+}
+
+.quick-revision .rev-root {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: var(--neon-cyan);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+}
+
+.quick-revision .rev-child {
+    background: rgba(255, 255, 255, 0.03);
+    min-width: 140px;
+    flex: 1;
+    padding: 12px 20px;
+}
+
+.quick-revision .rev-child:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.quick-revision .rev-child small {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+.quick-revision .rev-level {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 2px 0;
+}
+
+.quick-revision .rev-arrow {
+    color: var(--neon-cyan);
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.4;
+    padding: 2px 0;
+}
+
+@media (max-width: 768px) {
+    .quick-revision {
+        padding: 18px 14px;
+    }
+    .quick-revision .rev-level {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .quick-revision .rev-node {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        min-width: 100px;
+        width: 100%;
+        max-width: 280px;
+    }
+    .quick-revision .rev-root {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-revision {
+        padding: 14px 10px;
+    }
+    .quick-revision .rev-node {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+        min-width: 80px;
+    }
+    .quick-revision .rev-root {
+        font-size: 0.9rem;
+        padding: 10px 22px;
+    }
+}
+
+/* ============================================
+   🔧 RESPONSIVE FIXES FOR BRANCHING
+   ============================================ */
+
+@media (max-width: 768px) {
+    .scope-diagram {
+        padding: 20px 14px;
+    }
+    
+    .scope-diagram .hierarchy-horizontal-line {
+        width: 80%;
+    }
+    
+    .scope-diagram .hierarchy-children {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .scope-diagram .hierarchy-child {
+        max-width: 280px;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    /* Remove vertical lines from children in mobile */
+    .scope-diagram .hierarchy-child::before {
+        display: none;
+    }
+    
+    .scope-diagram .hierarchy-node {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .scope-diagram .hierarchy-root {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+    
+    .scope-diagram .hierarchy-sub-level {
+        width: 90%;
+        gap: 12px;
+    }
+    
+    .scope-diagram .hierarchy-sub-node {
+        font-size: 0.7rem;
+        padding: 6px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scope-diagram {
+        padding: 14px 10px;
+    }
+    
+    .scope-diagram .hierarchy-horizontal-line {
+        width: 90%;
+    }
+    
+    .scope-diagram .hierarchy-node {
+        font-size: 0.75rem;
+        padding: 10px 14px;
+        min-width: unset;
+    }
+    
+    .scope-diagram .hierarchy-root {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+    
+    .scope-diagram .hierarchy-child {
+        max-width: 100%;
+    }
+    
+    .scope-diagram .hierarchy-sub-level {
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .scope-diagram .hierarchy-sub-node {
+        font-size: 0.65rem;
+        padding: 5px 10px;
+    }
+}
+
+/* ===== ORIGINAL SCOPE DIAGRAM (for compatibility) ===== */
+.scope-diagram .scope-node {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.scope-diagram .scope-node:hover {
+    transform: translateY(-2px);
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.scope-diagram .scope-global {
+    background: rgba(179, 136, 255, 0.06);
+    border-color: rgba(179, 136, 255, 0.2);
+    color: #d4c0ff;
+}
+
+.scope-diagram .scope-global:hover {
+    border-color: var(--neon-purple);
+    background: rgba(179, 136, 255, 0.12);
+}
+
+.scope-diagram .scope-level {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}

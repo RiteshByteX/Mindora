@@ -28,9 +28,9 @@ const PYTHON_DATA = {
                     title: 'Introduction to Python',
                     lessons: [
                         { id: '1.1.1', title: 'Python Overview, History, Features & Applications', description: 'Introduction, History, features & Applications', file: '1.1.1.html', duration: '15 min' },
-                        { id: '1.1.2', title: 'Python Program Structure', description: 'Setting up programming environment', file: '1.1.2.html', duration: '20 min' },
-                        { id: '1.1.3', title: 'Variables & Data Types', description: 'Variables, data types, operators, scope and lifetime', file: '1.1.3.html', duration: '20 min' },
-                        { id: '1.1.4', title: 'Python REPL', description: 'Basics of the Python REPL (Read-Eval-Print Loop)', file: '1.1.4.html', duration: '15 min' }
+                        { id: '1.1.2', title: 'Python Environment', description: 'setting up programming environment', file: '1.1.2.html', duration: '20 min' },
+                        { id: '1.1.3', title: 'Tokens in Python', description: 'Keywords, Identifiers, Literals, Operators, Delimiters', file: '1.1.3.html', duration: '20 min' },
+                        { id: '1.1.4', title: 'Variables in Python', description: 'variables, Scope and Lifetime of Variables', file: '1.1.4.html', duration: '15 min' }
                     ]
                 },
                 {

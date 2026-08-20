@@ -344,6 +344,8 @@
     justify-content: center;
 }
 
+
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
     .lesson-container {
@@ -430,5 +432,181 @@
     .lesson-container .lesson-body .code-block {
         font-size: 0.75rem;
         padding: 12px 14px;
+    }
+}
+/* ============================================
+   🖼️ IMAGE STYLES
+   ============================================ */
+
+/* ----- Base Image Styles ----- */
+.lesson-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+    margin: 16px 0;
+    display: block;
+    transition: var(--transition-smooth);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.lesson-image:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.05);
+}
+
+/* ----- Image with Caption ----- */
+.image-container {
+    margin: 20px 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 16px;
+    transition: var(--transition-smooth);
+}
+
+.image-container:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.02);
+}
+
+.image-container .lesson-image {
+    margin: 0 auto 10px auto;
+    border: none;
+    border-radius: 8px;
+}
+
+.image-container .image-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* ----- Image Sizes ----- */
+.image-small {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-medium {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-large {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-full {
+    max-width: 100%;
+}
+
+/* ----- Image Alignment ----- */
+.image-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    max-width: 300px;
+}
+
+.image-right {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    max-width: 300px;
+}
+
+.image-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ----- Clearfix for floated images ----- */
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* ----- Responsive Images ----- */
+@media (max-width: 768px) {
+    .image-small,
+    .image-medium,
+    .image-large {
+        max-width: 100%;
+    }
+    
+    .image-left,
+    .image-right {
+        float: none;
+        margin: 10px auto;
+        display: block;
+        max-width: 100%;
+    }
+    
+    .image-container {
+        padding: 12px;
+    }
+    
+    .image-container .image-caption {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        padding: 8px;
+    }
+    
+    .image-container .image-caption {
+        font-size: 0.7rem;
+    }
+}
+
+/* ----- Image with Border Effects ----- */
+.image-bordered {
+    border: 2px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.image-glow {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.image-glow:hover {
+    box-shadow: 0 0 50px rgba(0, 240, 255, 0.15);
+}
+
+/* ----- Image Grid (for multiple images) ----- */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.image-grid .image-container {
+    margin: 0;
+}
+
+.image-grid .image-container .lesson-image {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 }
